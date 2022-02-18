@@ -59,9 +59,35 @@ const token = message.token(signedMessage.signature);
 const { SiwsMessage } = require("siws");
 ```
 
-#### 2. Decode 'Authorization' token sent in header
+#### 2a. Decode 'Authorization' token sent in header
 
 ```
 const token = request.header("Authorization");
-const decoded = new SiwsMessage({}).decode(token);
+const siwsMessage = new SiwsMessage({}).decode(token);
 ```
+
+#### 2b. If successful, your decoded message should look like the following
+
+```
+{
+  domain: 'localhost:3000',
+  address: 'F2eYiFsVehoZh3sesnKD8e7hDsQv57NtPUjyCW7qTS6i',
+  statement: 'Use SIWS to authenticate',
+  message: 'localhost:3000 wants you to sign in with your Solana account:\n' +
+    'F2eYiFsVehoZh3sesnKD8e7hDsQv57NtPUjyCW7qTS6i\n' +
+    '\n' +
+    'Use SIWS to authenticate.\n' +
+    '\n' +
+    'Nonce: ty4NbdFK9Pz48mGUfHklCg==\n' +
+    'Issued At: Fri Feb 18 2022 14:43:17 GMT-0700 (Mountain Standard Time)',
+  signature: '2C1PkWGfJw8btprKBaAiYsZGae2zgpBufgiyspqAqohprDDxGPsYS3DMSEstELCgmWWpeC6pbYwqDsG62vYXe5HC'
+}
+```
+
+#### 3. Validate the decoded token (will return a boolean)
+
+```
+const validated = siwsMessage.validate();
+```
+
+#### 4. If `validated === true`, you can trust that the address in the decoded was indeed the message signer
