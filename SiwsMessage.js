@@ -27,11 +27,12 @@ class SiwsMessage {
 
   decode(token) {
     let tokenObject = Buffer.from(token, "base64");
-    const message = JSON.parse(tokenObject.toString("utf8"));
-    this.domain = message.domain;
-    this.address = message.address;
-    this.statement = message.statement;
-    this.signature = message.signature;
+    const siwsMessage = JSON.parse(tokenObject.toString("utf8"));
+    this.domain = siwsMessage.domain;
+    this.address = siwsMessage.address;
+    this.statement = siwsMessage.statement;
+    this.signature = siwsMessage.signature;
+    this.message = siwsMessage.message;
     return this;
   }
 
