@@ -71,16 +71,16 @@ const siwsMessage = new SiwsMessage({}).decode(token);
 ```
 {
   domain: 'localhost:3000',
-  address: 'F2eYiFsVehoZh3sesnKD8e7hDsQv57NtPUjyCW7qTS6i',
+  address: '<address>',
   statement: 'Use SIWS to authenticate',
   message: 'localhost:3000 wants you to sign in with your Solana account:\n' +
-    'F2eYiFsVehoZh3sesnKD8e7hDsQv57NtPUjyCW7qTS6i\n' +
+    '<address>\n' +
     '\n' +
     'Use SIWS to authenticate.\n' +
     '\n' +
-    'Nonce: ty4NbdFK9Pz48mGUfHklCg==\n' +
-    'Issued At: Fri Feb 18 2022 14:43:17 GMT-0700 (Mountain Standard Time)',
-  signature: '2C1PkWGfJw8btprKBaAiYsZGae2zgpBufgiyspqAqohprDDxGPsYS3DMSEstELCgmWWpeC6pbYwqDsG62vYXe5HC'
+    'Nonce: <nonce>\n' +
+    'Issued At: Fri Feb 18 2022 4:20:00 GMT-0700 (Mountain Standard Time)',
+  signature: '<signature>'
 }
 ```
 
@@ -90,4 +90,4 @@ const siwsMessage = new SiwsMessage({}).decode(token);
 const validated = siwsMessage.validate();
 ```
 
-#### 4. If `validated === true`, you can trust that the address in the decoded was indeed the message signer
+#### 4. If `validated === true`, you can trust that the address in the decoded message was the message signer
