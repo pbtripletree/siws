@@ -20,7 +20,9 @@ class SiwsMessage {
   }
 
   token(signature) {
-    this.signature = signature;
+    this.signature = Array.isArray(signature)
+      ? bs58.encode(signature)
+      : signature;
     const tokenData = new Buffer.from(JSON.stringify(this));
     return tokenData.toString("base64");
   }
