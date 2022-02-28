@@ -33,12 +33,7 @@ const preparedMessage = message.prepare()
 #### 4. Sign message with solana
 
 ```
-const signedMessage = await solana.request({
-  method: "signMessage",
-  params: {
-    message: message.prepare(),
-  },
-});
+const signedMessage = await solana.signMessage(preparedMessage);
 ```
 
 #### 5. Create API token with signed message signature
