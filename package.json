@@ -1,6 +1,6 @@
 {
   "name": "siws",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "bs58": "^5.0.0",
-    "crypto": "^1.0.1",
     "tweetnacl": "^1.0.3"
   },
   "repository": {
